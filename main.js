@@ -14,4 +14,9 @@ image.src = './img/PokemonStyleGameMap.png';
 
 image.onload = () => {
   c.drawImage(image, -1100, -490);
+   c.drawImage(playerImage, 0, 0);
 }
+
+const playerImage = new Image();
+playerImage.src = './img/playerDown.png';
+
