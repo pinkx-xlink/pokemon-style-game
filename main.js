@@ -13,8 +13,11 @@ const image = new Image();
 image.src = './img/PokemonStyleGameMap.png';
 
 image.onload = () => {
-  c.drawImage(image, -1100, -490);
-   c.drawImage(playerImage, 0, 0);
+  c.drawImage(image, -1050, -570);
+   c.drawImage(
+    playerImage,
+    canvas.width / 2 - playerImage.width / 2,
+    canvas.height / 2 - playerImage.height / 2);
 }
 
 const playerImage = new Image();
