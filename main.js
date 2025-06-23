@@ -15,9 +15,9 @@ for (let i = 0; i < collisions.length; i+= 70) {
 class Boundary {
     static width = 48
     static height = 48
-    constructor(position) {
-        this.position = position,
-        this.width = 48,
+    constructor({ position }) {
+        this.position = position
+        this.width = 48
         this.height = 48
     }
     draw() {
@@ -128,7 +128,7 @@ animate();
 
 let lastKey = '';
 
-// move player down
+// move player 
 window.addEventListener('keydown', (e) => {
     switch (e.key) {
         case 'w':
