@@ -12,21 +12,43 @@ c.fillRect(0, 0, canvas.width, canvas.height);
 const image = new Image();
 image.src = './img/PokemonStyleGameMap.png';
 
+const playerImage = new Image();
+playerImage.src = './img/playerDown.png';
+
 image.onload = () => {
   c.drawImage(image, -1050, -570);
    c.drawImage(
     playerImage,
+    // cropping
     0,
     0,
     playerImage.width / 4,
     playerImage.height,
-    canvas.width / 2 - playerImage.width / 2,
+    // actual image rendered
+    canvas.width / 2 - playerImage.width / 4 / 2,
     canvas.height / 2 - playerImage.height / 2,
     playerImage.width / 4,
     playerImage.height
 )
 }
 
-const playerImage = new Image();
-playerImage.src = './img/playerDown.png';
+// move player down
+window.addEventListener('keydown', (e) => {
+    switch (e.key) {
+        case 'w':
+            console.log('pressed w')
+            break 
 
+        case 'a':
+            console.log('pressed a')
+            break 
+
+        case 's':
+            console.log('pressed s')
+            break 
+            
+        case 'd':
+            console.log('pressed d')
+            break 
+    }
+})
