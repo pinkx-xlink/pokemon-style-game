@@ -15,10 +15,34 @@ image.src = './img/PokemonStyleGameMap.png';
 const playerImage = new Image();
 playerImage.src = './img/playerDown.png';
 
+class Sprite {
+    constructor({
+        position,
+        velocity,
+        image
+    }) {
+        this.position = position,
+        this.image = image
+        // this.velocity = velocity
+    }
+
+    draw() {
+        c.drawImage(this.image, -1050, -570);
+    }
+}
+
+const background = new Sprite({ 
+    position: {
+        x: -1050,
+        y: -570
+    },
+    image: image
+});
+
 function animate() {
     window.requestAnimationFrame(animate);
     console.log('animate');
-    c.drawImage(image, -1050, -570);
+    background.draw();
    c.drawImage(
     playerImage,
     // cropping
@@ -31,7 +55,7 @@ function animate() {
     canvas.height / 2 - playerImage.height / 2,
     playerImage.width / 4,
     playerImage.height
-)
+    )
 }
 animate();
 
