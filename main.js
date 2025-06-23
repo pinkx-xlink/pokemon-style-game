@@ -33,8 +33,8 @@ class Sprite {
 
 const background = new Sprite({ 
     position: {
-        x: -1050,
-        y: -570
+        x: -1121,
+        y: -900
     },
     image: image
 });
