@@ -1,10 +1,48 @@
+// sconst { position } = require("html2canvas/dist/types/css/property-descriptors/position");
+
 const canvas = document.querySelector('canvas');
 // "c" stands for "context"
 const c = canvas.getContext('2d');
 
 canvas.width = 1024;
 canvas.height = 576;
-console.log(c);
+
+const collisionsMap = [];
+for (let i = 0; i < collisions.length; i+= 70) {
+    collisionsMap.push(collisions.slice(i, 70 + i));
+}
+
+class Boundary {
+    static width = 48
+    static height = 48
+    constructor(position) {
+        this.position = position,
+        this.width = 48,
+        this.height = 48
+    }
+    draw() {
+        c.fillStyle = 'red';
+        c.fillRect(this.position.x, this.position.y, this.width, this.height)
+    }
+}
+const boundaries = [];
+collisionsMap.forEach((row, i) => {
+    row.forEach((symbol, j) => {
+        if (symbol === 1025) {
+             boundaries.push(
+                new Boundary({
+                    position: {
+                        x: j * Boundary.width,
+                        y: i * Boundary.height
+                    }
+                })
+            )
+        }
+       
+    })
+})
+
+console.log(boundaries)
 
 c.fillStyle = 'white';
 c.fillRect(0, 0, canvas.width, canvas.height);
