@@ -151,7 +151,6 @@ window.addEventListener('keydown', (e) => {
             lastKey = 'd'
             break 
     }
-    console.log(keys)
 });
 
 window.addEventListener('keyup', (e) => {
@@ -172,5 +171,4 @@ window.addEventListener('keyup', (e) => {
             keys.d.pressed = false
             break 
     }
-    console.log(keys)
 })
