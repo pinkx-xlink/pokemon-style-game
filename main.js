@@ -11,7 +11,6 @@ c.fillRect(0, 0, canvas.width, canvas.height);
 
 const image = new Image();
 image.src = './img/PokemonStyleGameMap.png';
-console.log(image);
 
 image.onload = () => {
   c.drawImage(image, -1100, -490);
