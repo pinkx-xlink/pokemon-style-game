@@ -16,8 +16,15 @@ image.onload = () => {
   c.drawImage(image, -1050, -570);
    c.drawImage(
     playerImage,
+    0,
+    0,
+    playerImage.width / 4,
+    playerImage.height,
     canvas.width / 2 - playerImage.width / 2,
-    canvas.height / 2 - playerImage.height / 2);
+    canvas.height / 2 - playerImage.height / 2,
+    playerImage.width / 4,
+    playerImage.height
+)
 }
 
 const playerImage = new Image();
