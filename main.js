@@ -15,8 +15,10 @@ image.src = './img/PokemonStyleGameMap.png';
 const playerImage = new Image();
 playerImage.src = './img/playerDown.png';
 
-image.onload = () => {
-  c.drawImage(image, -1050, -570);
+function animate() {
+    window.requestAnimationFrame(animate);
+    console.log('animate');
+    c.drawImage(image, -1050, -570);
    c.drawImage(
     playerImage,
     // cropping
@@ -31,6 +33,7 @@ image.onload = () => {
     playerImage.height
 )
 }
+animate();
 
 // move player down
 window.addEventListener('keydown', (e) => {
@@ -46,7 +49,7 @@ window.addEventListener('keydown', (e) => {
         case 's':
             console.log('pressed s')
             break 
-            
+
         case 'd':
             console.log('pressed d')
             break 
