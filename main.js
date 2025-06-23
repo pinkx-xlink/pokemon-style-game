@@ -59,21 +59,50 @@ const playerImage = new Image();
 playerImage.src = './img/playerDown.png';
 
 class Sprite {
-    constructor({
-        position,
-        velocity,
-        image
-    }) {
-        this.position = position,
+    constructor({ position, velocity, image, frames = { max: 1 } }) {
+        this.position = position
         this.image = image
         // this.velocity = velocity
+        this.frames = frames
+
+        this.image.onload = () => {
+            this.width = this.image.width / this.frames.max
+            this.height = this.image.height
+            console.log(this.height)
+            console.log(this.width)
+        }
+        
     }
 
     draw() {
-        c.drawImage(this.image, this.position.x, this.position.y);
+        c.drawImage(
+        this.image,
+        // cropping
+        0,
+        0,
+        this.image.width / this.frames.max,
+        this.image.height,
+        // actual image rendered
+        this.position.x,
+        this.position.y,
+        this.image.width / this.frames.max,
+        this.image.height
+        )
     }
 }
+     // 
+     // 
 
+const player = new Sprite({
+    position: {
+        x: canvas.width / 2 - 192 / 4 / 2,
+        y: canvas.height / 2 - 68 / 2,
+    },
+    image: playerImage,
+    frames: {
+        max: 4
+    }
+})
 
 const background = new Sprite({ 
     position: {
@@ -111,23 +140,20 @@ function animate() {
     window.requestAnimationFrame(animate);
     background.draw();
     testBoundary.draw();
+    player.draw();
     // boundaries.forEach((boundary) => {
     //     boundary.draw();
     // });
-   c.drawImage(
-    playerImage,
-    // cropping
-    0,
-    0,
-    playerImage.width / 4,
-    playerImage.height,
-    // actual image rendered
-    canvas.width / 2 - playerImage.width / 4 / 2,
-    canvas.height / 2 - playerImage.height / 2,
-    playerImage.width / 4,
-    playerImage.height
-    )
+   
 
+   if (player.position.x + player.width >= testBoundary.position.x && 
+    player.position.x <= testBoundary.position.x + testBoundary.width &&
+    player.position.y <= testBoundary.position.y + testBoundary.height &&
+    player.position.y + player.height >= testBoundary.position.y
+   ) {
+    console.log('colliding!');
+   }
+    
    if (keys.w.pressed && lastKey === 'w') {
     movables.forEach(moveable => {moveable.position.y += 3})
    }
