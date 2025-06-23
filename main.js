@@ -10,7 +10,7 @@ c.fillStyle = 'white';
 c.fillRect(0, 0, canvas.width, canvas.height);
 
 const image = new Image();
-image.src = './img/PokemonStyleGameMap.png';
+image.src = './img/PokemonStyleGameMap1.png';
 
 const playerImage = new Image();
 playerImage.src = './img/playerDown.png';
