@@ -108,19 +108,16 @@ function rectangularCollision({rectangle1, rectangle2}) {
 function animate() {
     window.requestAnimationFrame(animate);
     background.draw();
-    
-    player.draw();
-    foreground.draw();
     boundaries.forEach((boundary) => {
          boundary.draw();
-
-          
     });
-   
-
+    player.draw();
+    foreground.draw();
   
     let moving = true;
+   player.moving = false
    if (keys.w.pressed && lastKey === 'w') {
+    player.moving = true
     for (let i = 0; i < boundaries.length; i++) {
         const boundary = boundaries[i];
         if (
@@ -135,9 +132,9 @@ function animate() {
                 }
             })
         ) {
-                console.log('colliding!');
-                moving = false;
-                break
+            console.log('colliding!');
+            moving = false;
+            break
         }
     }
     if (moving === true)
@@ -145,6 +142,7 @@ function animate() {
    }
 
    else if (keys.a.pressed && lastKey === 'a') {
+    player.moving = true
       for (let i = 0; i < boundaries.length; i++) {
         const boundary = boundaries[i];
         if (
@@ -169,6 +167,7 @@ function animate() {
    }
 
    else if (keys.s.pressed && lastKey === 's') {
+    player.moving = true
       for (let i = 0; i < boundaries.length; i++) {
         const boundary = boundaries[i];
         if (
@@ -193,6 +192,7 @@ function animate() {
    }
 
    else if (keys.d.pressed && lastKey === 'd') {
+    player.moving = true
      for (let i = 0; i < boundaries.length; i++) {
         const boundary = boundaries[i];
         if (
