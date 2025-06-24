@@ -43,6 +43,9 @@ c.fillRect(0, 0, canvas.width, canvas.height);
 const image = new Image();
 image.src = './img/PokemonStyleGameMap1.png';
 
+const foregroundImage = new Image();
+foregroundImage.src = './img/foregroundObjects.png';
+
 const playerImage = new Image();
 playerImage.src = './img/playerDown.png';
 
@@ -73,7 +76,7 @@ const foreground = new Sprite({
         x: offset.x,
         y: offset.y
     },
-    image: image
+    image: foregroundImage
 });
 
 const keys = {
@@ -91,7 +94,7 @@ const keys = {
     }
 }
 
-const movables = [background, ...boundaries]
+const movables = [background, foreground, ...boundaries]
 
 //rectangle 1 = player
 function rectangularCollision({rectangle1, rectangle2}) {
@@ -107,6 +110,7 @@ function animate() {
     background.draw();
     
     player.draw();
+    foreground.draw();
     boundaries.forEach((boundary) => {
          boundary.draw();
 
