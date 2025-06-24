@@ -112,6 +112,14 @@ const background = new Sprite({
     image: image
 });
 
+const foreground = new Sprite({ 
+    position: {
+        x: offset.x,
+        y: offset.y
+    },
+    image: image
+});
+
 const keys = {
     w: {
         pressed: false
