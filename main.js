@@ -1,6 +1,9 @@
 // sconst { position } = require("html2canvas/dist/types/css/property-descriptors/position");
 // const { opacity } = require("html2canvas/dist/types/css/property-descriptors/opacity");
 
+// const { duration } = require("html2canvas/dist/types/css/property-descriptors/duration");
+// const { opacity } = require("html2canvas/dist/types/css/property-descriptors/opacity");
+
 const canvas = document.querySelector('canvas');
 // "c" stands for "context"
 const c = canvas.getContext('2d');
@@ -151,7 +154,7 @@ const battle = {
 }
 
 function animate() {
-    window.requestAnimationFrame(animate);
+    const animationId = window.requestAnimationFrame(animate);
     background.draw();
     boundaries.forEach((boundary) => {
          boundary.draw();
@@ -187,12 +190,27 @@ function animate() {
                 Math.random() < 0.01 // this means there's 1% chance of a battle
             ) {
                 console.log('activate battle!')
+
+                // deactivate current animation loop
+                window.cancelAnimationFrame(animationId);
+
                 battle.initiated = true
                 gsap.to('#overlappingDiv', {
                     opacity: 1, 
                     repeat: 3,
                     yoyo: true,
-                    duration: 0.4
+                    duration: 0.4,
+                    onComplete() {
+                        gsap.to('#overlappingDiv', {
+                            opacity: 1,
+                            duration: 0.4
+                        })
+
+                        // activate new animaiton loop
+                        animateBattle()
+                       
+
+                    }
                 })
                 break
             }
@@ -313,6 +331,11 @@ function animate() {
 }
 
 animate();
+
+function animateBattle() {
+    window.requestAnimationFrame(animateBattle)
+    console.log('animating battle');
+}
 
 let lastKey = '';
 
