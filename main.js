@@ -3,7 +3,7 @@
 const canvas = document.querySelector('canvas');
 // "c" stands for "context"
 const c = canvas.getContext('2d');
-console.log(battleZonesData);
+console.log(gsap);
 canvas.width = 1024;
 canvas.height = 576;
 
