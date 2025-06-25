@@ -170,7 +170,8 @@ function animate() {
                     rectangle1: player,
                     rectangle2: battleZone
                 }) &&
-                overlappingArea > player.width * player.height / 2 
+                overlappingArea > player.width * player.height / 2 &&
+                Math.random() < 0.01 // this means there's 1% chance of a battle
             ) {
                 console.log('BATTLE ZONE!')
                 break
