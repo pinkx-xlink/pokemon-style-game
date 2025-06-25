@@ -367,11 +367,27 @@ const draggle = new Sprite({
     animate: true
 })
 
+const embyImg = new Image();
+embyImg.src = './img/embySprite.png'
+const emby = new Sprite({
+    position: {
+        x: 280,
+        y: 325
+    },
+    image: embyImg,
+    frames: {
+        max: 4,
+        hold: 30
+    },
+    animate: true
+})
+
 function animateBattle() {
     window.requestAnimationFrame(animateBattle)
     console.log('animating battle');
     battleBackground.draw();
     draggle.draw();
+    emby.draw();
 }
 
 animateBattle()
