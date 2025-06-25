@@ -154,6 +154,21 @@ function animate() {
     })
     player.draw();
     foreground.draw();
+
+    if (keys.w.pressed || keys.a.pressed || keys.s.pressed || keys.d.pressed) {
+         for (let i = 0; i < battleZones.length; i++) {
+            const battleZone = battleZones[i];
+            if (
+                rectangularCollision({
+                    rectangle1: player,
+                    rectangle2: battleZone
+                })
+            ) {
+                console.log('BATTLE ZONE!')
+                break
+            }
+        }
+    }
   
     let moving = true;
    player.moving = false
@@ -180,6 +195,8 @@ function animate() {
             break
         }
     }
+
+       
     if (moving === true)
     movables.forEach(moveable => {moveable.position.y += 3})
    }
@@ -234,6 +251,7 @@ function animate() {
                 break
         }
     }
+    
     if (moving === true)
     movables.forEach(moveable => {moveable.position.y -= 3})
    }
