@@ -143,6 +143,11 @@ function rectangularCollision({rectangle1, rectangle2}) {
         rectangle1.position.y + rectangle1.height >= rectangle2.position.y    
     )
 }
+
+const battle = {
+
+}
+
 function animate() {
     window.requestAnimationFrame(animate);
     background.draw();
@@ -155,6 +160,12 @@ function animate() {
     player.draw();
     foreground.draw();
 
+    let moving = true;
+    player.moving = false
+
+    if (battle.initiated) return
+
+    // activate battle 
     if (keys.w.pressed || keys.a.pressed || keys.s.pressed || keys.d.pressed) {
          for (let i = 0; i < battleZones.length; i++) {
             const battleZone = battleZones[i];
@@ -173,14 +184,14 @@ function animate() {
                 overlappingArea > player.width * player.height / 2 &&
                 Math.random() < 0.01 // this means there's 1% chance of a battle
             ) {
-                console.log('BATTLE ZONE!')
+                console.log('activate battle!')
+                battle.initiated = true
                 break
             }
         }
     }
   
-    let moving = true;
-   player.moving = false
+    
    if (keys.w.pressed && lastKey === 'w') {
     player.moving = true
     player.image = player.sprites.up
