@@ -1,9 +1,11 @@
 // sconst { position } = require("html2canvas/dist/types/css/property-descriptors/position");
+// const { opacity } = require("html2canvas/dist/types/css/property-descriptors/opacity");
 
 const canvas = document.querySelector('canvas');
 // "c" stands for "context"
 const c = canvas.getContext('2d');
-console.log(gsap);
+
+
 canvas.width = 1024;
 canvas.height = 576;
 
@@ -186,6 +188,12 @@ function animate() {
             ) {
                 console.log('activate battle!')
                 battle.initiated = true
+                gsap.to('#overlappingDiv', {
+                    opacity: 1, 
+                    repeat: 3,
+                    yoyo: true,
+                    duration: 0.4
+                })
                 break
             }
         }
