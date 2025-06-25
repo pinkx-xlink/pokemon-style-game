@@ -1,5 +1,11 @@
 class Sprite {
-  constructor({ position, velocity, image, frames = { max: 1 }, sprites, animate = false }) {
+  constructor({ 
+    position, 
+    velocity, 
+    image, 
+    frames = { max: 1, hold: 10 }, 
+    sprites, 
+    animate = false }) {
     this.position = position
     this.image = image
     // this.velocity = velocity
@@ -35,7 +41,7 @@ class Sprite {
     }
         
 
-    if(this.frames.elapsed % 10 === 0) {
+    if(this.frames.elapsed % this.frames.hold === 0) {
       if (this.frames.val < this.frames.max - 1) this.frames.val++
       else this.frames.val = 0
     }
