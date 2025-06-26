@@ -38,15 +38,23 @@ class Sprite {
     if (!this.animate) return
     if (this.frames.max > 1) {
       this.frames.elapsed++
-    }
-        
+    }  
 
     if(this.frames.elapsed % this.frames.hold === 0) {
       if (this.frames.val < this.frames.max - 1) this.frames.val++
       else this.frames.val = 0
     }
 
-        
+    attack({attack, recipient}) {
+    const tl = gsap.timeLine()
+    tl.to(this.position, {
+        x: this.position.x - 20
+    }).to(this.position, {
+        x: this.position.x + 40
+    }).to(this.position, {
+        x: this.position.x
+    })
+    } 
   }
 }
 

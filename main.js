@@ -392,6 +392,21 @@ function animateBattle() {
 
 animateBattle()
 
+document.querySelectorAll('button').forEach((button) => {
+    button.addEventListener('click', () => {
+    console.log('clicked')
+    emby.attack({ 
+    attack: {
+        name: 'Tackle',
+        damage: 10,
+        type: 'Normal'
+        },
+        recipient: draggle
+        })
+    })
+}) 
+
+
 let lastKey = '';
 
 // move player 
