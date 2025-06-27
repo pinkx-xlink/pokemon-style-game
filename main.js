@@ -393,16 +393,13 @@ function animateBattle() {
 
 animateBattle()
 
+// our event listeners for our attack buttoms
 document.querySelectorAll('button').forEach((button) => {
-    button.addEventListener('click', () => {
-    console.log('clicked')
-    draggle.attack({ 
-    attack: {
-        name: 'Tackle',
-        damage: 10,
-        type: 'Normal'
-        },
-        recipient: emby
+    button.addEventListener('click', (e) => {
+    console.log(e.currentTarget.innerHTML)
+    emby.attack({ 
+    attack: ,
+        recipient: draggle
         })
     })
 }) 
